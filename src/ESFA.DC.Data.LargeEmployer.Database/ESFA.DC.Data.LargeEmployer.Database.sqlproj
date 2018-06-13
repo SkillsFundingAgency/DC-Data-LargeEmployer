@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{f6276eb1-99d3-4035-818f-4c9f387126ba}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -60,11 +60,27 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
     <Folder Include="zzDeploymentProfiles" />
+    <Folder Include="Security" />
+    <Folder Include="Staging" />
+    <Folder Include="Staging\Stored Procedures" />
+    <Folder Include="Staging\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\LargeEmployers.sql" />
     <Build Include="dbo\Tables\VersionInfo.sql" />
     <Build Include="dbo\Tables\SourceFile.sql" />
+    <Build Include="Security\LargeEmployer_RO_User.sql" />
+    <Build Include="Security\LargeEmployer_RW_User.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="Security\Staging.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process.sql" />
+    <Build Include="Staging\Stored Procedures\usp_RemovedProcessedRecords.sql" />
+    <Build Include="Staging\Tables\LargeEmployers.sql" />
+    <Build Include="Staging\Tables\SourceFile.sql" />
+    <Build Include="Staging\Tables\VersionInfo.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_SourceFile.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_LargeEmployers.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_VersionInfo.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ESFA.DC.Data.LargeEmployer.Database.refactorlog" />
@@ -72,5 +88,23 @@
   <ItemGroup>
     <None Include="zzDeploymentProfiles\Release.publish.xml" />
     <None Include="zzDeploymentProfiles\zz.Local.Dev.Version.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="BUILD_BRANCHNAME">
+      <DefaultValue>DevMachine</DefaultValue>
+      <Value>$(SqlCmdVar__4)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="BUILD_BUILDNUMBER">
+      <DefaultValue>0.0.0.0</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LargeEmployerROUserPassword">
+      <DefaultValue>NotUsedLocally</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LargeEmployerRWUserPassword">
+      <DefaultValue>NotUsedLocally</DefaultValue>
+      <Value>$(SqlCmdVar__7)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>

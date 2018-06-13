@@ -8,6 +8,12 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
+    <SqlCmdVariable Include="LargeEmployerROUserPassword">
+      <Value>Set@Deploymnet</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LargeEmployerRWUserPassword">
+      <Value>Set@DeploymnetAsWell</Value>
+    </SqlCmdVariable>
     <SqlCmdVariable Include="BUILD_BUILDNUMBER">
       <Value>X.Y.Z-LocalDev</Value>
     </SqlCmdVariable>
