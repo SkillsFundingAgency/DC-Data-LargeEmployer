@@ -31,8 +31,7 @@ BEGIN
 					,[EffectiveFrom]
 					,[EffectiveTo]
 					)
-			VALUES ( Source.[Postcode]
-					,Source.[AreaCode]
+			VALUES ( Source.[ERN]
 					,Source.[EffectiveFrom]
 					,Source.[EffectiveTo]
 				  )

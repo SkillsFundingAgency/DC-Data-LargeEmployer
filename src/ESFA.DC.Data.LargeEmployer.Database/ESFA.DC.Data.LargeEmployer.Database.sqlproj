@@ -107,4 +107,7 @@
       <Value>$(SqlCmdVar__7)</Value>
     </SqlCmdVariable>
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="zzz.Script.PostDeployment.sql" />
+  </ItemGroup>
 </Project>
