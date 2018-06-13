@@ -44,6 +44,8 @@ GO
 RAISERROR('		   Update User Account Passwords',10,1) WITH NOWAIT;
 GO
 ALTER USER [LargeEmployer_RO_User] WITH PASSWORD = N'$(LargeEmployerROUserPassword)';
-RAISERROR('		   Update User Account Passwords - Done %s',10,1,N'$(LargeEmployerROUserPassword)') WITH NOWAIT;
+ALTER USER [LargeEmployer_RW_User] WITH PASSWORD = N'$(LargeEmployerRWUserPassword)';
 
+GO
+RAISERROR('		   Update User Account Passwords Update Complete',10,1) WITH NOWAIT;
 GO
