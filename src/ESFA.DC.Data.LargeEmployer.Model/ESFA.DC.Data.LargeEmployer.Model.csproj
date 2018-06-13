@@ -89,16 +89,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LargeEmployer.Context.tt">
+    <None Include="LargeEmployer.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LargeEmployer.edmx</DependentUpon>
       <LastGenOutput>LargeEmployer.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="LargeEmployer.tt">
+    </None>
+    <None Include="LargeEmployer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LargeEmployer.edmx</DependentUpon>
       <LastGenOutput>LargeEmployer.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
