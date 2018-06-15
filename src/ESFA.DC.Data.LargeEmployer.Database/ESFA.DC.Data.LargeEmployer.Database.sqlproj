@@ -62,9 +62,9 @@
     <Folder Include="zzDeploymentProfiles" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\LargeEmployers.sql" />
-    <Build Include="dbo\Tables\VersionInfo.sql" />
-    <Build Include="dbo\Tables\SourceFile.sql" />
+    <Build Include="dbo\Tables\LEMP_Employers.sql" />
+    <Build Include="dbo\Tables\LEMP_VersionInfo.sql" />
+    <Build Include="dbo\Tables\LEMP_SourceFile.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ESFA.DC.Data.LargeEmployer.Database.refactorlog" />
