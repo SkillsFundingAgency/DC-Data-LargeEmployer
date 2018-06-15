@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[VersionInfo]
+﻿CREATE TABLE [dbo].[LEMP_VersionInfo]
 (
 	[Version] INT NOT NULL,
 	[Date] DATE NOT NULL, 

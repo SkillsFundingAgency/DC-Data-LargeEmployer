@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4c4004d52dca45919091a4df4a8feb1d" Name="Diagram1" >
-        <EntityTypeShape EntityType="LargeEmployer.Model.LargeEmployers" Width="1.5" PointX="3.375" PointY="1.375" />
-        <EntityTypeShape EntityType="LargeEmployer.Model.SourceFile" Width="1.5" PointX="3.375" PointY="3.375" />
-        <EntityTypeShape EntityType="LargeEmployer.Model.VersionInfo" Width="1.5" PointX="6" PointY="3.375" />
+      <Diagram DiagramId="18259df0507a4d45a2e2efdf0bebea7d" Name="Diagram1">
+        <EntityTypeShape EntityType="ESFA.DC.Data.LargeEmployer.Model.LEMP_Employers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.LargeEmployer.Model.LEMP_SourceFile" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.LargeEmployer.Model.LEMP_VersionInfo" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

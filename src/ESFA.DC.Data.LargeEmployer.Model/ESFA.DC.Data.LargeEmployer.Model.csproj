@@ -50,14 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C__RefactorLog.cs">
-      <DependentUpon>LargeEmployer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Interface\ILargeEmployers.cs" />
+    <Compile Include="Interface\ILargeEmployer.cs" />
     <Compile Include="LargeEmployer.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LargeEmployer.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LargeEmployer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LargeEmployer.tt</DependentUpon>
     </Compile>
     <Compile Include="LargeEmployer.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -65,43 +67,43 @@
       <DependentUpon>LargeEmployer.edmx</DependentUpon>
     </Compile>
     <Compile Include="LargeEmployerConstructor.cs" />
-    <Compile Include="LargeEmployers.cs">
+    <Compile Include="LEMP_Employers.cs">
+      <DependentUpon>LargeEmployer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LEMP_SourceFile.cs">
+      <DependentUpon>LargeEmployer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LEMP_VersionInfo.cs">
       <DependentUpon>LargeEmployer.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SourceFile.cs">
-      <DependentUpon>LargeEmployer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VersionInfo.cs">
-      <DependentUpon>LargeEmployer.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ESFA.DC.Data.LargeEmployer.Model.nuspec" />
     <EntityDeploy Include="LargeEmployer.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LargeEmployer.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ESFA.DC.Data.LargeEmployer.Model.nuspec" />
     <None Include="LargeEmployer.edmx.diagram">
       <DependentUpon>LargeEmployer.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LargeEmployer.Context.tt">
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LargeEmployer.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LargeEmployer.edmx</DependentUpon>
       <LastGenOutput>LargeEmployer.Context.cs</LastGenOutput>
-    </None>
-    <None Include="LargeEmployer.tt">
+    </Content>
+    <Content Include="LargeEmployer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LargeEmployer.edmx</DependentUpon>
       <LastGenOutput>LargeEmployer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
