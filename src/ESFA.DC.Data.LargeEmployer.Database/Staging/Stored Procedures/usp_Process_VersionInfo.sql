@@ -1,47 +1,38 @@
-﻿CREATE PROCEDURE [Staging].[usp_Process_VersionInfo]
+﻿CREATE PROCEDURE [Staging].[usp_Process_LEMP_VersionInfo]
 AS
 BEGIN
 	SET NOCOUNT ON;
 
 	BEGIN TRY
 
-		MERGE INTO [dbo].[SourceFile] AS Target
+		MERGE INTO [dbo].[LEMP_VersionInfo] AS Target
 		USING (
-				SELECT  [ID] , 
-						[FileName], 
-						[FilePreparationDate],
-						[Created]
-				  FROM [Staging].[SourceFile]
+				SELECT  [Version] , 
+						[Date]
+				  FROM [Staging].[LEMP_VersionInfo]
 			  )
 			  AS Source 
-		    ON Target.[ID] = Source.[ID]
+		    ON Target.[Version] = Source.[Version]
 			WHEN MATCHED 
 				AND EXISTS 
 					(	SELECT 
-							 Target.[FileName],		
-							 Target.[FilePreparationDate],		
-							 Target.[Created]				
+							 Target.[Version],		
+							 Target.[Date]				
 					EXCEPT 
 						SELECT 
-							 Source.[FileName],
-							 Source.[FilePreparationDate],
-							 Source.[Created]
+							 Source.[Version],
+							 Source.[Date]
 					)
 		  THEN
 			UPDATE SET   
-				 [FileName] = Source.[FileName]	,
-				 [FilePreparationDate] = Source.[FilePreparationDate],
-				 [Created] = Source.[Created]							
+				 [Version] = Source.[Version],
+				 [Date] = Source.[Date]							
 		WHEN NOT MATCHED BY TARGET THEN
-		INSERT (     [ID]
-					,[FileName]
-					,[FilePreparationDate]
-					,[Created]
+		INSERT (     [Version]
+					,[Date]
 					)
-			VALUES ( Source.[ID]
-					,Source.[FileName]
-					,Source.[FilePreparationDate]
-					,Source.[Created]
+			VALUES ( Source.[Version]
+					,Source.[Date]
 				  )
 		WHEN NOT MATCHED BY SOURCE THEN DELETE
 		;

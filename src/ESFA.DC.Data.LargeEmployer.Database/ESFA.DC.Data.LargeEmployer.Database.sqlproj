@@ -66,9 +66,9 @@
     <Folder Include="Staging\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\LargeEmployers.sql" />
-    <Build Include="dbo\Tables\VersionInfo.sql" />
-    <Build Include="dbo\Tables\SourceFile.sql" />
+    <Build Include="dbo\Tables\LEMP_Employers.sql" />
+    <Build Include="dbo\Tables\LEMP_VersionInfo.sql" />
+    <Build Include="dbo\Tables\LEMP_SourceFile.sql" />
     <Build Include="Security\LargeEmployer_RO_User.sql" />
     <Build Include="Security\LargeEmployer_RW_User.sql" />
     <Build Include="Security\RoleMemberships.sql" />
