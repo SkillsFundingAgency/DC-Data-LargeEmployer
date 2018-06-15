@@ -1,16 +1,16 @@
-﻿CREATE PROCEDURE [Staging].[usp_Process_LargeEmployers]
+﻿CREATE PROCEDURE [Staging].[usp_Process_LEMP_LargeEmployers]
 AS
 BEGIN
 	SET NOCOUNT ON;
 
 	BEGIN TRY
 		
-		MERGE INTO [dbo].[LargeEmployers] AS Target
+		MERGE INTO [dbo].[LEMP_Employers] AS Target
 		USING (
 				SELECT  [ERN] , 
 						[EffectiveFrom], 
 						[EffectiveTo]
-				  FROM [Staging].[LargeEmployers]
+				  FROM [Staging].[LEMP_LargeEmployers]
 			  )
 			  AS Source 
 		    ON Target.[ERN] = Source.[ERN]

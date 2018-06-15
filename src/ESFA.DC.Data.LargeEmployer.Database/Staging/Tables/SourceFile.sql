@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[SourceFile]
+﻿CREATE TABLE [Staging].[LEMP_SourceFile]
 (
 	[ID] INT IDENTITY(1,1) NOT NULL,
 	[FileName] NVARCHAR(60) NOT NULL,

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[LargeEmployers]
+﻿CREATE TABLE [Staging].[LEMP_Employers]
 (
 	[ERN] INT NOT NULL,
 	[EffectiveFrom] DATE NOT NULL, 
