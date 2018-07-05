@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[LargeEmployers]
+﻿CREATE TABLE [dbo].[LEMP_Employers]
 (
 	[ERN] INT NOT NULL,
 	[EffectiveFrom] DATE NOT NULL, 

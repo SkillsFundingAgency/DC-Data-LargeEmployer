@@ -1,17 +1,17 @@
-﻿CREATE PROCEDURE [Staging].[usp_Process_SourceFile]
+﻿CREATE PROCEDURE [Staging].[usp_Process_LEMP_SourceFile]
 AS
 BEGIN
-	SET NOCOUNT ON;
+	SET NOCOUNT ON
 
 	BEGIN TRY
 
-		MERGE INTO [dbo].[SourceFile] AS Target
+		MERGE INTO [dbo].[LEMP_SourceFile] AS Target
 		USING (
 				SELECT  [ID] , 
 						[FileName], 
 						[FilePreparationDate],
 						[Created]
-				  FROM [Staging].[SourceFile]
+				  FROM [Staging].[LEMP_SourceFile]
 			  )
 			  AS Source 
 		    ON Target.[ID] = Source.[ID]

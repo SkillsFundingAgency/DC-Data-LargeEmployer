@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[VersionInfo]
+﻿CREATE TABLE [Staging].[LEMP_VersionInfo]
 (
 	[Version] INT NOT NULL,
 	[Date] DATE NOT NULL, 

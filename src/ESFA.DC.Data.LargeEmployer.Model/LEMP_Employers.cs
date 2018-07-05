@@ -12,7 +12,7 @@ namespace ESFA.DC.Data.LargeEmployer.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class LargeEmployers
+    public partial class LEMP_Employers
     {
         public int ERN { get; set; }
         public System.DateTime EffectiveFrom { get; set; }
