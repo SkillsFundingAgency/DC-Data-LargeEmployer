@@ -98,11 +98,11 @@
       <DefaultValue>0.0.0.0</DefaultValue>
       <Value>$(SqlCmdVar__2)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="LargeEmployerROUserPassword">
+    <SqlCmdVariable Include="RWUserPassword">
       <DefaultValue>NotUsedLocally</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="LargeEmployerRWUserPassword">
+    <SqlCmdVariable Include="ROUserPassword">
       <DefaultValue>NotUsedLocally</DefaultValue>
       <Value>$(SqlCmdVar__7)</Value>
     </SqlCmdVariable>

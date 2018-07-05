@@ -43,8 +43,8 @@ RAISERROR('		   Extended Property - Compelete',10,1) WITH NOWAIT;
 GO
 RAISERROR('		   Update User Account Passwords',10,1) WITH NOWAIT;
 GO
-ALTER USER [LargeEmployer_RO_User] WITH PASSWORD = N'$(LargeEmployerROUserPassword)';
-ALTER USER [LargeEmployer_RW_User] WITH PASSWORD = N'$(LargeEmployerRWUserPassword)';
+ALTER USER [LargeEmployer_RO_User] WITH PASSWORD = N'$(ROUserPassword)';
+ALTER USER [LargeEmployer_RW_User] WITH PASSWORD = N'$(RWUserPassword)';
 
 GO
 RAISERROR('		   Update User Account Passwords Update Complete',10,1) WITH NOWAIT;

@@ -8,10 +8,10 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="LargeEmployerROUserPassword">
+    <SqlCmdVariable Include="ROUserPassword">
       <Value>__LargeEmployerROUserPassword__</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="LargeEmployerRWUserPassword">
+    <SqlCmdVariable Include="RWUserPassword">
       <Value>__LargeEmployerRWUserPassword__</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="BUILD_BUILDNUMBER">
