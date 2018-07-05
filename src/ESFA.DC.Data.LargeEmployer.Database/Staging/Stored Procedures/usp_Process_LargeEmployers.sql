@@ -10,7 +10,7 @@ BEGIN
 				SELECT  [ERN] , 
 						[EffectiveFrom], 
 						[EffectiveTo]
-				  FROM [Staging].[LEMP_LargeEmployers]
+				  FROM [Staging].[LEMP_Employers]
 			  )
 			  AS Source 
 		    ON Target.[ERN] = Source.[ERN]
