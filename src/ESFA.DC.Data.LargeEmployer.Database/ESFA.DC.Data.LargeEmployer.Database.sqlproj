@@ -86,7 +86,6 @@
     <RefactorLog Include="ESFA.DC.Data.LargeEmployer.Database.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="zzDeploymentProfiles\Release.publish.xml" />
     <None Include="zzDeploymentProfiles\zz.Local.Dev.Version.publish.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +96,11 @@
     <SqlCmdVariable Include="BUILD_BUILDNUMBER">
       <DefaultValue>0.0.0.0</DefaultValue>
       <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="RELEASE_RELEASENAME">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__8)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="RWUserPassword">
       <DefaultValue>NotUsedLocally</DefaultValue>
