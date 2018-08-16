@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [Staging].[usp_Process_LEMP_SourceFile]
+﻿CREATE PROCEDURE [Staging].[usp_Process_SourceFile]
 AS
 BEGIN
 	SET NOCOUNT ON

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [Staging].[usp_Process_LEMP_VersionInfo]
+﻿CREATE PROCEDURE [Staging].[usp_Process_VersionInfo]
 AS
 BEGIN
 	SET NOCOUNT ON;

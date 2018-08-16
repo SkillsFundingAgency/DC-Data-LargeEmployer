@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [Staging].[usp_Process_LEMP_LargeEmployers]
+﻿CREATE PROCEDURE [Staging].[usp_Process_LargeEmployers]
 AS
 BEGIN
 	SET NOCOUNT ON;

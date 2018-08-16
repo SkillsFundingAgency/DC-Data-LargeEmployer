@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ESFA.DC.Data.LargeEmployer.SSIS", "ESFA.DC.Data.LargeEmployer.SSIS.dtproj", "{F56870DE-0639-49A8-AD55-8AF7DC2AABBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F56870DE-0639-49A8-AD55-8AF7DC2AABBE}.Development|Default.ActiveCfg = Development
+		{F56870DE-0639-49A8-AD55-8AF7DC2AABBE}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0BF5D99-FD24-497F-9F58-9B59B9149227}
+	EndGlobalSection
+EndGlobal

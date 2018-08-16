@@ -10,17 +10,23 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Development|Any CPU.Deploy.0 = Debug|Any CPU
 		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F6276EB1-99D3-4035-818F-4C9F387126BA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{3765C05E-07E3-4881-8C1C-0B63F0E707EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3765C05E-07E3-4881-8C1C-0B63F0E707EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3765C05E-07E3-4881-8C1C-0B63F0E707EC}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{3765C05E-07E3-4881-8C1C-0B63F0E707EC}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{3765C05E-07E3-4881-8C1C-0B63F0E707EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3765C05E-07E3-4881-8C1C-0B63F0E707EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
