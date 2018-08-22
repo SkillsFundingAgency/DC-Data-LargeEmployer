@@ -16,21 +16,21 @@ SET NOCOUNT ON;
 GO
 
 RAISERROR('Drop Non Required Objects :- ',10,1) WITH NOWAIT;
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Staging].[usp_Process_LEMP_LargeEmployers]') AND type in (N'P', N'PC'))
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Staging].[usp_Process_LEMP_LargeEmployers]') AND type in (N'P', N'PC'))
 BEGIN
 	RAISERROR('Drop SP : [Staging].[usp_Process_LEMP_LargeEmployers]',10,1) WITH NOWAIT;
 	DROP PROCEDURE [Staging].[usp_Process_LEMP_LargeEmployers];
 END
 
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Staging].[usp_Process_LEMP_SourceFile]') AND type in (N'P', N'PC'))
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Staging].[usp_Process_LEMP_SourceFile]') AND type in (N'P', N'PC'))
 BEGIN
 	RAISERROR('Drop SP : [Staging].[usp_Process_LEMP_SourceFile]',10,1) WITH NOWAIT;
 	DROP PROCEDURE [Staging].[usp_Process_LEMP_SourceFile];
 END
 
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Staging].[usp_Process_LEMP_VersionInfo]') AND type in (N'P', N'PC'))
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Staging].[usp_Process_LEMP_VersionInfo]') AND type in (N'P', N'PC'))
 BEGIN
 	RAISERROR('Drop SP : [Staging].[usp_Process_LEMP_VersionInfo]',10,1) WITH NOWAIT;
 	DROP PROCEDURE [Staging].[usp_Process_LEMP_VersionInfo];
