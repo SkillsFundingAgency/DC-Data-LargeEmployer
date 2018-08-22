@@ -12,11 +12,27 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="55"
-  DTS:VersionGUID="{B725CDA1-BE5D-42C9-A38C-9C42507FE085}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{8623E66A-012B-4DE0-9CD4-FE58D299F25D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[App Log Connection String]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{74F0C0E1-B294-4D4F-B5D5-E413812FD49C}"
+      DTS:ObjectName="App Log Connection String">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::AppLogConnectionString_ConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Source Connection Manager]"
       DTS:CreationName="OLEDB"
@@ -46,13 +62,180 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A2A14F97-CAA3-4A9C-95B6-28FBBDD6E4C0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RefDataName">
+      <DTS:VariableValue
+        DTS:DataType="8">Large Employer</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Process - Log Completed"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{f7b38eec-8907-4634-9fda-5374e1235e6d}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Process - Log Completed">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{5262b11f-9bdf-4d94-9540-5a4d25b79e90}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Action">
+          <DTS:VariableValue
+            DTS:DataType="8">Completed</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{d1aa5c14-1c32-4544-aaa5-706b7802a532}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Name">
+          <DTS:VariableValue
+            DTS:DataType="8">Log Start</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{f5f29126-3a4c-41f3-8fd6-b760e0cdd5c5}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="&quot;INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; '&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [Message]&#xA;,'&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'&quot; + @[User::RefDataName]+ &quot;' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]&quot;&#xA;"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SqlCommand">
+          <DTS:VariableValue
+            DTS:DataType="8">INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])
+SELECT 
+ 'Large Employer Ref Data Refresh Completed' AS [Message]
+,'Large Employer Ref Data Refresh Completed' AS [MessageTemplate]
+,'Information' AS [Level]
+,GETUTCDATE() AS [TimeStampUTC]
+,NULL AS [Exception]
+,HOST_NAME() AS [MachineName]
+,'SSIS Loader' AS [ProcessName]
+,NULL AS [ThreadId]
+,'Large Employer' AS [CallerName]
+,NULL AS [SourceFile]
+,NULL AS [LineNumber]
+,NULL AS [JobId]
+,NULL AS [TaskKey]</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:PropertyExpression
+        DTS:Name="Name">"SEQ - Process - Log " + @[User::Action]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Process - Log Completed\SQL - Log Completed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{15cef97e-e9d0-444b-9965-a97c79b32ddd}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Log Completed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Name">"SQL - Log " + @[User::Action]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{74F0C0E1-B294-4D4F-B5D5-E413812FD49C}"
+              SQLTask:SqlStatementSource="INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; 'Large Employer Ref Data Refresh Completed' AS [Message]&#xA;,'Large Employer Ref Data Refresh Completed' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'Large Employer' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Process - Log Started"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{5371c995-5a80-4f4b-b124-5070bc34d65c}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Process - Log Started">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{00ac5bfe-13a7-4b93-8572-9852c955e441}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Action">
+          <DTS:VariableValue
+            DTS:DataType="8">Started</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{a8fcc566-bf17-47d4-8ef7-39e9fb1cf950}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Name">
+          <DTS:VariableValue
+            DTS:DataType="8">Log Start</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{ff9998bd-0092-41c3-ab03-c6a500da482f}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="&quot;INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; '&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [Message]&#xA;,'&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'&quot; + @[User::RefDataName]+ &quot;' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]&quot;&#xA;"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SqlCommand">
+          <DTS:VariableValue
+            DTS:DataType="8">INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])
+SELECT 
+ 'Large Employer Ref Data Refresh Started' AS [Message]
+,'Large Employer Ref Data Refresh Started' AS [MessageTemplate]
+,'Information' AS [Level]
+,GETUTCDATE() AS [TimeStampUTC]
+,NULL AS [Exception]
+,HOST_NAME() AS [MachineName]
+,'SSIS Loader' AS [ProcessName]
+,NULL AS [ThreadId]
+,'Large Employer' AS [CallerName]
+,NULL AS [SourceFile]
+,NULL AS [LineNumber]
+,NULL AS [JobId]
+,NULL AS [TaskKey]</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:PropertyExpression
+        DTS:Name="Name">"SEQ - Process - Log " + @[User::Action]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Process - Log Started\SQL - Log Started"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{754547c4-c621-4fc3-b87b-8531a3f59293}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Log Started"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Name">"SQL - Log " + @[User::Action]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{74F0C0E1-B294-4D4F-B5D5-E413812FD49C}"
+              SQLTask:SqlStatementSource="INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; 'Large Employer Ref Data Refresh Started' AS [Message]&#xA;,'Large Employer Ref Data Refresh Started' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'Large Employer' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ - Process Data"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
       DTS:DTSID="{0BC66E0D-49D3-4D50-A1FE-704E6712DCA4}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -450,21 +633,19 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\SQL - Delete from - LargeEmployers"
+              DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\SQL - Clear Table - LargeEmployers"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{0F295F50-0B0C-46E8-BBFF-4B9453820183}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - LargeEmployers"
+              DTS:ObjectName="SQL - Clear Table - LargeEmployers"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:ThreadHint="0">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:DTSID="{2ee4698a-f599-4280-823c-a52a9aab7703}"
-                  DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::StagingObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
@@ -473,11 +654,11 @@
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear Table - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{6735D1D2-53E8-4516-BCB5-3965DE073595}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[LEMP_Employers];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE Staging.LEMP_Employers;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -486,7 +667,7 @@
               DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{596eadec-f6ab-45da-a87c-a4681ae22891}"
-              DTS:From="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\SQL - Delete from - LargeEmployers"
+              DTS:From="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\SQL - Clear Table - LargeEmployers"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\DFT - LargeEmployers" />
@@ -496,7 +677,6 @@
           DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - SourceFile"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
-          DTS:Disabled="True"
           DTS:DTSID="{36e7a6d3-b7e3-4ac2-a2b0-a5e68a0a0b93}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
@@ -943,34 +1123,22 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - SourceFile\SQL - Delete from - SourceFile"
+              DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - SourceFile\SQL - Clear Table - SourceFile"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{29ed9cba-79f8-403b-a646-4e8599ca6f43}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - SourceFile"
+              DTS:ObjectName="SQL - Clear Table - SourceFile"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:ThreadHint="1">
-              <DTS:Variables>
-                <DTS:Variable
-                  DTS:CreationName=""
-                  DTS:DTSID="{7155eded-b9f1-4880-9a46-e32184fe9a75}"
-                  DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::StagingObjectName] + &quot;;&quot;"
-                  DTS:IncludeInDebugDump="2345"
-                  DTS:Namespace="User"
-                  DTS:ObjectName="SqlCommand">
-                  <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[LEMP_Employers];</DTS:VariableValue>
-                </DTS:Variable>
-              </DTS:Variables>
+              <DTS:Variables />
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear Table - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{6735D1D2-53E8-4516-BCB5-3965DE073595}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[LEMP_SourceFile];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE Staging.LEMP_SourceFile;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -979,7 +1147,7 @@
               DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - SourceFile.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{c1a0dc6f-53a4-47d5-8db9-e8a7e84a78e5}"
-              DTS:From="Package\SEQ - Stage Data\SEQ - Stage - SourceFile\SQL - Delete from - SourceFile"
+              DTS:From="Package\SEQ - Stage Data\SEQ - Stage - SourceFile\SQL - Clear Table - SourceFile"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Stage Data\SEQ - Stage - SourceFile\DFT - SourceFile" />
@@ -1282,34 +1450,23 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\SQL - Delete from - VersionInfo"
+              DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\SQL - Clear Table - VersionInfo"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{4563A2CB-2790-42F8-9AE4-ECC894C03243}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - VersionInfo"
+              DTS:ObjectName="SQL - Clear Table - VersionInfo"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:ThreadHint="2">
-              <DTS:Variables>
-                <DTS:Variable
-                  DTS:CreationName=""
-                  DTS:DTSID="{777cd43b-4690-4c90-9bc3-94d15c3e9b8e}"
-                  DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::StagingObjectName] + &quot;;&quot;"
-                  DTS:IncludeInDebugDump="2345"
-                  DTS:Namespace="User"
-                  DTS:ObjectName="SqlCommand">
-                  <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[LEMP_VersionInfo];</DTS:VariableValue>
-                </DTS:Variable>
-              </DTS:Variables>
+              <DTS:Variables />
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear Table - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{6735D1D2-53E8-4516-BCB5-3965DE073595}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[LEMP_VersionInfo];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:BypassPrepare="False"
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE Staging.LEMP_VersionInfo;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -1318,7 +1475,7 @@
               DTS:refId="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{f141cf58-dccf-466a-90d2-8daae58a5b4e}"
-              DTS:From="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\SQL - Delete from - VersionInfo"
+              DTS:From="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\SQL - Clear Table - VersionInfo"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\DFT - VersionInfo" />
@@ -1336,6 +1493,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\SEQ - Process Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{91E475F5-2E68-4B3C-A7C5-A854DFBEE935}"
+      DTS:From="Package\SEQ - Process - Log Started"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SEQ - Stage Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{89372E38-E99E-4CC3-9FAF-360A96D4ED20}"
+      DTS:From="Package\SEQ - Process Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SEQ - Process - Log Completed" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1350,6 +1523,28 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="240,42"
+          Id="Package\SEQ - Process - Log Completed\SQL - Log Completed"
+          TopLeft="20.5,12.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="283,69"
+          Size="283,112"
+          Id="Package\SEQ - Process - Log Completed"
+          TopLeft="623.638888888889,600.777777777779" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\SEQ - Process - Log Started\SQL - Log Started"
+          TopLeft="20.5,12.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="283,69"
+          Size="283,112"
+          Id="Package\SEQ - Process - Log Started"
+          TopLeft="624.750000000004,151.055555555556" />
+        <NodeLayout
           Size="285,44"
           Id="Package\SEQ - Process Data\SEQ - Process - Process Data\SQL - Run - Process Data"
           TopLeft="5.25,3.75" />
@@ -1363,21 +1558,21 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="394,166"
-          Size="394,209"
+          PanelSize="342,137"
+          Size="342,180"
           Id="Package\SEQ - Process Data"
-          TopLeft="430.76190476191,533.714285714287" />
+          TopLeft="583.623015873021,310.769841269843" />
         <NodeLayout
           Size="224,42"
           Id="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\DFT - LargeEmployers"
           TopLeft="35,74.5" />
         <NodeLayout
           Size="289,42"
-          Id="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\SQL - Delete from - LargeEmployers"
-          TopLeft="5.5,5.5" />
+          Id="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers\SQL - Clear Table - LargeEmployers"
+          TopLeft="4.5,5.5" />
         <EdgeLayout
           Id="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers.PrecedenceConstraints[Constraint]"
-          TopLeft="148.5,47.5">
+          TopLeft="148,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1400,8 +1595,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="300,125"
-          Size="300,168"
+          PanelSize="300,128"
+          Size="300,171"
           Id="Package\SEQ - Stage Data\SEQ - Stage - LargeEmployers"
           TopLeft="10.857142857143,12" />
         <NodeLayout
@@ -1410,7 +1605,7 @@
           TopLeft="35,74.5" />
         <NodeLayout
           Size="289,42"
-          Id="Package\SEQ - Stage Data\SEQ - Stage - SourceFile\SQL - Delete from - SourceFile"
+          Id="Package\SEQ - Stage Data\SEQ - Stage - SourceFile\SQL - Clear Table - SourceFile"
           TopLeft="5.5,5.5" />
         <EdgeLayout
           Id="Package\SEQ - Stage Data\SEQ - Stage - SourceFile.PrecedenceConstraints[Constraint]"
@@ -1440,14 +1635,14 @@
           PanelSize="300,125"
           Size="300,168"
           Id="Package\SEQ - Stage Data\SEQ - Stage - SourceFile"
-          TopLeft="343.857142857143,13" />
+          TopLeft="8.52380952381009,380.333333333333" />
         <NodeLayout
           Size="224,42"
           Id="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\DFT - VersionInfo"
           TopLeft="35,74.5" />
         <NodeLayout
           Size="289,42"
-          Id="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\SQL - Delete from - VersionInfo"
+          Id="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo\SQL - Clear Table - VersionInfo"
           TopLeft="5.5,5.5" />
         <EdgeLayout
           Id="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo.PrecedenceConstraints[Constraint]"
@@ -1477,28 +1672,108 @@
           PanelSize="300,125"
           Size="300,168"
           Id="Package\SEQ - Stage Data\SEQ - Stage - VersionInfo"
-          TopLeft="681.214285714285,9.928571428572" />
+          TopLeft="8.76984126984053,194.039682539683" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1015,233"
-          Size="1015,276"
+          PanelSize="326,603"
+          Size="326,646"
           Id="Package\SEQ - Stage Data"
-          TopLeft="119,163" />
+          TopLeft="124.285714285715,118.833333333333" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="627.130952380955,439">
+          TopLeft="450.285714285715,548.166666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,94.7142857142869"
+              EndConnector="133.337301587306,-147.396825396823"
               Start="0,0"
-              End="0,87.2142857142869">
+              End="125.837301587306,-147.396825396823">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,87.2142857142869" />
+                    End="49.5325793895917,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.5325793895917,0"
+                    Point2="53.5325793895917,0"
+                    Point3="53.5325793895917,-4" />
+                  <mssgle:LineSegment
+                    End="53.5325793895917,-143.396825396823" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.5325793895917,-143.396825396823"
+                    Point2="53.5325793895917,-147.396825396823"
+                    Point3="57.5325793895917,-147.396825396823" />
+                  <mssgle:LineSegment
+                    End="125.837301587306,-147.396825396823" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="624.750000000004,207.055555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174.464285714289,128.444444444444"
+              Start="0,0"
+              End="-166.964285714289,128.444444444444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-100.419946174889,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100.419946174889,0"
+                    Point2="-104.419946174889,0"
+                    Point3="-104.419946174889,4" />
+                  <mssgle:LineSegment
+                    End="-104.419946174889,124.444444444444" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-104.419946174889,124.444444444444"
+                    Point2="-104.419946174889,128.444444444444"
+                    Point3="-108.419946174889,128.444444444444" />
+                  <mssgle:LineSegment
+                    End="-166.964285714289,128.444444444444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="754.623015873021,490.769841269843">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.5158730158676,110.007936507936"
+              Start="0,0"
+              End="10.5158730158676,102.507936507936">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.0039682539679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.0039682539679"
+                    Point2="0,55.0039682539679"
+                    Point3="4,55.0039682539679" />
+                  <mssgle:LineSegment
+                    End="6.51587301586756,55.0039682539679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.51587301586756,55.0039682539679"
+                    Point2="10.5158730158676,55.0039682539679"
+                    Point3="10.5158730158676,59.0039682539679" />
+                  <mssgle:LineSegment
+                    End="10.5158730158676,102.507936507936" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

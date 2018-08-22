@@ -14,32 +14,32 @@ BEGIN
 				  FROM [Staging].[LEMP_SourceFile]
 			  )
 			  AS Source 
-		    ON Target.[ID] = Source.[ID]
+		    ON Target.[FileName] = Source.[FileName]
 			WHEN MATCHED 
 				AND EXISTS 
 					(	SELECT 
-							 Target.[FileName],		
+							 --Target.[FileName],		
 							 Target.[FilePreparationDate],		
 							 Target.[Created]				
 					EXCEPT 
 						SELECT 
-							 Source.[FileName],
+							 --Source.[FileName],
 							 Source.[FilePreparationDate],
 							 Source.[Created]
 					)
 		  THEN
 			UPDATE SET   
-				 [FileName] = Source.[FileName]	,
+				 --[FileName] = Source.[FileName]	,
 				 [FilePreparationDate] = Source.[FilePreparationDate],
 				 [Created] = Source.[Created]							
 		WHEN NOT MATCHED BY TARGET THEN
-		INSERT (     [ID]
-					,[FileName]
+		INSERT (    -- [ID]
+					 [FileName]
 					,[FilePreparationDate]
 					,[Created]
 					)
-			VALUES ( Source.[ID]
-					,Source.[FileName]
+			VALUES ( --Source.[ID]
+					 Source.[FileName]
 					,Source.[FilePreparationDate]
 					,Source.[Created]
 				  )

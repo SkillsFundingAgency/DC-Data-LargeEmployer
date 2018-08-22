@@ -8,4 +8,5 @@
 
 GO
 GRANT ALTER ON OBJECT::Staging.LEMP_Employers TO [LargeEmployer_RW_User];
+GO
 

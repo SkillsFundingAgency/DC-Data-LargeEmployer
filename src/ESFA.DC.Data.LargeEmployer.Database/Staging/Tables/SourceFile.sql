@@ -9,3 +9,4 @@
 
 GO
 GRANT ALTER ON OBJECT::Staging.LEMP_SourceFile TO [LargeEmployer_RW_User];
+GO

@@ -4,9 +4,14 @@ BEGIN
 	SET NOCOUNT ON;
 
 	BEGIN TRY
-				
+
+			RAISERROR('LargeEmployers',10,1) WITH NOWAIT;				
 			EXEC [Staging].[usp_Process_LargeEmployers];
+			
+			RAISERROR('SourceFile',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_SourceFile];
+			
+			RAISERROR('VersionInfo',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_VersionInfo];
 			
 		RETURN 0;
@@ -44,3 +49,7 @@ BEGIN
 -------------------------------------------------------------------------------------- 
 -- 
 END
+GO
+
+GRANT EXECUTE ON [Staging].[usp_Process] TO [LargeEmployer_RW_User]
+GO

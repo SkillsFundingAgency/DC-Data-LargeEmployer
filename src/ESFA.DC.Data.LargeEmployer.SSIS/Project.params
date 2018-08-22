@@ -16,7 +16,7 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">Data Source=DSCI-PRD-SQL-98;Initial Catalog=Large_Employers_Reference_Data;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+        SSIS:Name="Value"></SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
@@ -37,7 +37,28 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">Provider=SQLNCLI11.1;Data Source=DCOL-TST-SqlServer-WEU.database.windows.net,1433;Initial Catalog=LargeEmployers;User Id=LargeEmployer_RW_User;Password=rSNsuzTRZQaW4PoXFlqCk0w5UbJ-tKEG8ehI7Lvf23gyVd@B6MniADHxjmcp1YO9GjVN7ifyQ4Z;Auto Translate=False;</SSIS:Property>
+        SSIS:Name="Value"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="AppLogConnectionString_ConnectionString">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{b3ef4591-4512-46f0-9993-3d53dc7ecd44}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">1</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value"></SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>

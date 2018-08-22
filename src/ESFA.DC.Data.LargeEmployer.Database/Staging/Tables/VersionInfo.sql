@@ -7,3 +7,4 @@
 
 GO
 GRANT ALTER ON OBJECT::Staging.LEMP_VersionInfo TO [LargeEmployer_RW_User];
+GO
